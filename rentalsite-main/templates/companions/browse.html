@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check User Existence and Fetch Data</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    
+
+
+
+
+    <h1>Check User Existence and Fetch Data</h1>
+    <label for="user-id">Enter User ID:</label>
+    <input type="text" id="user-id" placeholder="Enter User ID">
+    <button id="check-existence">Check Existence</button>
+
+    <div id="result">
+        <!-- Result message will be displayed here -->
+    </div>
+
+    <div id="user-data" style="display: none;">
+        <!-- User data will be displayed here -->
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#check-existence').click(function() {
+                var userId = $('#user-id').val();
+                var api_url = 'http://127.0.0.1:8000/api/companions/';
+
+                $.ajax({
+                    url: api_url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(users) {
+                        var userExists = false;
+                        var userData = null;
+                        
+                        for (var i = 0; i < users.length; i++) {
+                            if (users[i].id === parseInt(userId)) {
+                                userExists = true;
+                                userData = users[i];
+                                break;
+                            }
+                        }
+
+                        var resultContainer = $('#result');
+                        var userDataContainer = $('#user-data');
+
+                        if (userExists) {
+                            resultContainer.html('<p>User with ID ' + userId + ' exists.</p>');
+                            userDataContainer.html('<h2>User Data</h2><p>ID: ' + userData.id + '</p><p>Phone: ' + userData.phone + '</p><p>Location: ' + userData.location + '</p><p>Age: ' + userData.age + '</p><p>Bio: ' + userData.bio + '</p><p>Is Companion: ' + userData.is_companion + '</p><p>Selected: ' + userData.selected + '</p><p>Date Joined: ' + userData.date_joined + '</p><p>User ID: ' + userData.user + '</p>');
+                            userDataContainer.show();
+                        } else {
+                            resultContainer.html('<p>User with ID ' + userId + ' does not exist.</p>');
+                            userDataContainer.hide();
+                        }
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        $('#result').html('<p>Error: ' + errorThrown + '</p>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

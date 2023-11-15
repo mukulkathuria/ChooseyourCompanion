@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create User</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+      }
+
+      h1 {
+          text-align: center;
+      }
+
+      form {
+          max-width: 400px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #fff;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-group {
+          margin-bottom: 15px;
+      }
+
+      label {
+          display: block;
+          font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="number"] {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+      }
+
+      button {
+          display: block;
+          width: 100%;
+          padding: 10px;
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+      }
+
+      button:hover {
+          background-color: #0056b3;
+      }
+  </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+  <h1>Create a New User</h1>
+  <div class="error-message">
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+   {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+  <form method="post">
+      {% csrf_token %}
+  
+      <div class="form-group">
+          <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+          {{ form.first_name }}
+      </div>
+  
+      <div class="form-group">
+          <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+          {{ form.last_name }}
+      </div>
+  
+      <div class="form-group">
+          <label for="{{ form.username.id_for_label }}">Username:</label>
+          {{ form.username }}
+      </div>
+  
+      <div class="form-group">
+          <label for="{{ form.email.id_for_label }}">Email:</label>
+          {{ form.email }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.password1.id_for_label }}">Password:</label>
+        {{ form.password1 }}
+        Your password can’t be too similar to your other personal information.
+        Your password must contain at least 8 characters.
+        Your password can’t be a commonly used password.
+        Your password can’t be entirely numeric.
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+        {{ form.password2 }}
+    </div>
+    <div class="form-group">
+      <label for="{{ form.phone.id_for_label }}">Phone:</label>
+      {{ form.phone }}
+  </div>
+
+  <div class="form-group">
+    <label for="{{ form.location.id_for_label }}">Location:</label>
+    {{ form.location }}
+</div>
+  
+    <div class="form-group">
+        <label for="{{ form.age.id_for_label }}">Age:</label>
+        {{ form.age }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.user_type.id_for_label }}">User Type:</label>
+        {{ form.user_type }}
+    </div>
+    <div class="companion-fields" style="display: none;">
+        <!-- Companion-specific fields -->
+        <div class="form-group">
+          <label for="{{ form.height.id_for_label }}">Height:</label>
+          {{ form.height }}
+        </div>
+  
+        <div class="form-group">
+          <label for="{{ form.languages.id_for_label }}">Languages:</label>
+          {{ form.languages }}
+        </div>
+  
+        <div class="form-group">
+            <label for="{{ form.what_makes.id_for_label }}">What:</label>
+            {{ form.what_makes}}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.employment_history.id_for_label }}">employment_history:</label>
+            {{ form.employment_history }}
+          </div>
+    
+          <div class="form-group">
+            <label for="{{ form.educational_background.id_for_label }}">educational_background:</label>
+            {{ form.educational_background }}
+          </div>
+    
+          <div class="form-group">
+              <label for="{{ form.skills.id_for_label }}">skills:</label>
+              {{ form.skills}}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.expected_salary.id_for_label }}">expected_salary:</label>
+            {{ form.expected_salary }}
+          </div>
+    
+          <div class="form-group">
+            <label for="{{ form.availability_date.id_for_label }}">availability_date:</label>
+            {{ form.availability_date }}
+          </div>
+    
+          <div class="form-group">
+              <label for="{{ form.cover_letter.id_for_label }}">cover_letter:</label>
+              {{ form.cover_letter}}
+          </div>
+          <div class="form-group">
+              <label for="{{ form.photo_face.id_for_label }}">photo_face:</label>
+              {{ form.photo_face }}
+            </div>
+      
+            <div class="form-group">
+              <label for="{{ form.photo_body.id_for_label }}">photo_body:</label>
+              {{ form.photo_body }}
+            </div>
+      
+            <div class="form-group">
+                <label for="{{ form.accepted.id_for_label }}">accepted:</label>
+                {{ form.accepted}}
+            </div>
+
+
+
+
+
+      </div>
+    
+
+    
+          
+      <!-- Repeat the above pattern for other fields -->
+      <button type="submit">Create User</button>
+      <a href="{% url 'accounts:google-signup' %}" id="google-signup-link">Sign Up with Google</a>
+  </form>
+
+  <script>
+    class TrieNode {
+      constructor() {
+          this.children = new Map();
+          this.isEndOfWord = false;
+      }
+  }
+  class LocationTrie {
+      constructor() {
+          this.root = new TrieNode();
+      } 
+  
+      insert(location) {
+          let node = this.root;
+          for (const char of location) {
+              if (!node.children.has(char)) {
+                  node.children.set(char, new TrieNode());
+              }
+              node = node.children.get(char);
+          }
+          node.isEndOfWord = true;
+      }
+  
+      search(prefix) {
+          let node = this.root;
+          const suggestions = [];
+          for (const char of prefix) {
+              if (!node.children.has(char)) {
+                  return suggestions;
+              }
+              node = node.children.get(char);
+          }
+          this._getSuggestions(prefix, node, suggestions);
+          return suggestions;
+      }
+  
+      _getSuggestions(prefix, node, suggestions) {
+          if (node.isEndOfWord) {
+              suggestions.push(prefix);
+          }
+          for (const [char, childNode] of node.children) {
+              this._getSuggestions(prefix + char, childNode, suggestions);
+          }
+      }
+  }
+
+  // Make an AJAX request to fetch location data from the server
+$(function() {
+    $("#id_location").autocomplete({
+        source: function(request, response) {
+            // Your source URL for fetching suggestions
+            var sourceURL = "http://127.0.0.1:8000/location-suggestions/";
+
+            // Perform an AJAX request to fetch suggestions
+            $.get(sourceURL, { term: request.term }, function(data) {
+                // Limit the suggestions to the first 10 items
+                response(data.slice(0, 10));
+            });
+        },
+        minLength: 2,
+    });
+
+});
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Show/hide companion fields and Google signup link based on user type selection
+    $('input[name="user_type"]').change(function() {
+      var userType = $(this).val();
+      if (userType === 'companion') {
+        $('.companion-fields').show();
+        $('#google-signup-link').hide();
+      } else {
+        $('.companion-fields').hide();
+        $('#google-signup-link').show();
+      }
+    });
+  });
+</script>
+ 
+
+
+</body>
+</html>

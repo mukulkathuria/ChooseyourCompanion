@@ -1,0 +1,6 @@
+{% extends 'header.html' %}
+
+{% block content %}
+  <h2>Logged Out</h2>
+  <p>You have been successfully logged out. <a href="{% url 'accounts:login' %}">Login again?</a></p>
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Data</title>
+</head>
+<body>
+    <h1>Payment Data</h1>
+    <ul id="payment-list">
+        <!-- Payment data will be loaded here using JavaScript -->
+    </ul>
+
+    <script>
+        // Function to load payment data from the API
+        function loadPaymentData() {
+            var apiURL = 'http://127.0.0.1:8000/api/payment-callback/';
+
+            // Select the payment list container
+            var paymentList = document.getElementById('payment-list');
+
+            // Make an AJAX request to the API
+            fetch(apiURL)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(payment => {
+                        // Create list items for each payment
+                        var listItem = document.createElement('li');
+                        listItem.innerHTML = `
+                            <strong>Order ID:</strong> ${payment.order_id}<br>
+                            <strong>Amount:</strong> ${payment.amount}<br>
+                            <strong>Status:</strong> ${payment.status}<br><br>
+                        `;
+                        paymentList.appendChild(listItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    paymentList.innerHTML = 'Failed to load payment data.';
+                });
+        }
+
+        // Load payment data when the page loads
+        window.addEventListener('load', loadPaymentData);
+    </script>
+</body>
+</html>
