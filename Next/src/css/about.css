@@ -1,0 +1,124 @@
+.zestfulabout {
+    text-align: center;
+    font-size: 80px;
+    margin: 150px 0 0 0 ;
+}
+
+.hello {
+    text-align: center;
+    width: 100%;
+    height: 80vh;
+    background-image: url('about.in.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    clip-path: polygon(100% 0%, 100% 75%, 50% 100%, 0 75%, 0 0);
+    position: relative;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    border: rgb(126, 138, 126);
+    border-radius: 4px;
+}
+
+.aboutus {
+    height: auto;
+    width: 93%;
+    background-color: #383838;
+    text-align: center;
+}
+
+.aboutus ul {
+    color: white;
+    font-size: larger;
+
+}
+
+.aboutus p {
+    color: white;
+    font-size: larger;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Kalam', cursive;
+    font-family: 'Rubik', sans-serif;
+
+}
+
+.aboutus {
+    border: medium none;
+    padding: 50px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.aboutus:hover {
+    box-shadow: 20px 20px 20px 0 rgba(201, 201, 201, 0.959);
+    transform: translateY(-20px);
+}
+
+
+
+.row2 {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    border: rgb(126, 138, 126);
+    border-radius: 4px;
+}
+
+.aboutus2 {
+    height: auto;
+    width: 93%;
+    background-color: #e0e0e0;
+    text-align: center;
+}
+
+.aboutus2 ul {
+    color: rgb(26, 25, 25);
+    font-size: larger;
+
+}
+
+.aboutus2 p {
+    color: rgb(3, 3, 3);
+    font-size: larger;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Kalam', cursive;
+    font-family: 'Rubik', sans-serif;
+
+}
+
+.aboutus2 {
+    border: medium none;
+    padding: 50px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.aboutus2:hover {
+    box-shadow: 20px 20px 20px 0 rgba(201, 201, 201, 0.959);
+    transform: translateY(-20px);
+}
+
+@media(max-width:767px) {
+    .hello {
+        width: 92vw;
+        height: 80vh;
+    }
+
+    .aboutus {
+        margin-left: 30px;
+    }
+}
+
+@media(max-width:375px) {
+    .hello {
+        width: 95vw;
+        height: 75vh;
+    }
+}
+
+/*aboutus end here */

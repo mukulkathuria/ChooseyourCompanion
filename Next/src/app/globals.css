@@ -1,4 +1,15 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
- */
+.customHeading {
+   font-style: italic;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 700;
+   color: #f0f2f4;
+   line-height: 70px;
+}
+
+.customHeadingBlack {
+   font-style: italic;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 700;
+   color: #000;
+   line-height: 70px;
+}
